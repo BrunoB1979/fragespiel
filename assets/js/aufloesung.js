@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("explanation").innerText = lastExplanation;
 
     // Button zur nächsten Frage
-    const nextButton = document.getElementById("nextButton");
+    const nextButton = document.getElementById("footerButton"); // Korrigierte ID verwenden
     nextButton.onclick = () => {
         const nextQuestionIndex = currentQuestionIndex + 1;
         localStorage.setItem("currentQuestionIndex", nextQuestionIndex.toString());
