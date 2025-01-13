@@ -10,6 +10,7 @@
     --button-color: #4A90E2;
     --button-hover: #357ABD;
 }
+
 /* Frage-Icon Styling */
 #document-icon {
     width: 50px; /* Feste Breite */
@@ -23,6 +24,7 @@
 #document-icon:hover {
     transform: scale(1.1); /* Optional: Vergrößerung bei Hover */
 }
+
 /* Körper */
 body {
     background-color: var(--background-color);
@@ -45,39 +47,47 @@ body {
     text-align: center;
 }
 
-/* Startseite */
-h1 {
+/* Header */
+header h1 {
     font-size: 24px;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+header #progress {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+/* Main-Bereich */
+main {
+    margin: 15px 0;
+}
+
+/* Frage-Titel */
+main h2#question {
+    font-size: 20px;
     color: var(--text-primary);
     margin-bottom: 20px;
 }
 
-select, button {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-button {
+/* Antworten */
+main #options button {
     background-color: var(--button-color);
     color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    margin: 5px 0;
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+main #options button:hover {
     background-color: var(--button-hover);
-}
-
-/* Rundenzähler */
-#progress {
-    font-size: 18px;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-    text-align: center; /* Zentriert */
 }
 
 /* Ergebnisseite */
@@ -87,6 +97,33 @@ button:hover {
     color: var(--text-primary);
 }
 
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 15px;
+}
+
+footer #footerButton {
+    background-color: var(--button-color);
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+footer #footerButton:hover {
+    background-color: var(--button-hover);
+}
+
+/* Zentrierte Inhalte */
+footer, main, header {
+    text-align: center;
+}
+
+/* Spezifische Seiten (falls nötig) */
 #restartButton {
     background-color: var(--button-color);
     color: #fff;
@@ -101,3 +138,4 @@ button:hover {
 #restartButton:hover {
     background-color: var(--button-hover);
 }
+
