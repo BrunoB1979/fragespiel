@@ -3,32 +3,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const questions = JSON.parse(localStorage.getItem("questions"));
     const currentQuestionIndex = parseInt(localStorage.getItem("currentQuestionIndex")) || 0;
 
-    // Debugging-Logs für die Konsole
-    console.log("Geladene Fragen:", questions);
-    console.log("Aktueller Fragenindex:", currentQuestionIndex);
-
     // Prüfen, ob alle Fragen beantwortet wurden
     if (!questions || currentQuestionIndex >= questions.length) {
         // Zur Bewertungsseite weiterleiten
-        console.log("Alle Fragen beantwortet. Weiter zur Bewertungsseite.");
         window.location.href = "bewertung.html";
         return;
     }
 
     // Aktuelle Frage laden
     const question = questions[currentQuestionIndex];
-    console.log("Aktuelle Frage:", question);
 
     // Fortschrittsanzeige aktualisieren
     document.getElementById("currentQuestion").innerText = currentQuestionIndex + 1;
     document.getElementById("totalQuestions").innerText = questions.length;
 
     // Frage anzeigen
-    if (question && question.question) {
-        document.getElementById("question").innerText = question.question;
-    } else {
-        console.error("Fehler: Frage ist undefiniert.");
-    }
+    document.getElementById("question").innerText = question.question;
 
     // Antworten zufällig sortieren und anzeigen
     const optionsContainer = document.getElementById("options");
@@ -50,17 +40,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 const newScore = isCorrect ? currentScore + question.points : currentScore;
                 localStorage.setItem("score", newScore.toString());
 
-                // Index erhöhen und speichern
-                localStorage.setItem("currentQuestionIndex", (currentQuestionIndex + 1).toString());
+                // Richtig/Falsch-Symbol anzeigen
+                const feedbackIcon = document.createElement("img");
+                feedbackIcon.src = isCorrect
+                    ? "assets/images/correct.svg"
+                    : "assets/images/incorrect.svg";
+                feedbackIcon.alt = isCorrect ? "Richtig" : "Falsch";
+                feedbackIcon.style.width = "50px";
+                feedbackIcon.style.marginTop = "20px";
+                optionsContainer.innerHTML = ""; // Buttons entfernen
+                optionsContainer.appendChild(feedbackIcon);
 
-                // Nächste Frage oder Bewertungsseite
-                if (currentQuestionIndex + 1 >= questions.length) {
-                    console.log("Letzte Frage beantwortet. Weiter zur Bewertung.");
-                    window.location.href = "bewertung.html";
-                } else {
-                    console.log("Lade nächste Frage.");
-                    window.location.href = "frage.html";
-                }
+                // Weiter nach kurzer Verzögerung
+                setTimeout(() => {
+                    const nextQuestionIndex = currentQuestionIndex + 1;
+                    localStorage.setItem("currentQuestionIndex", nextQuestionIndex.toString());
+
+                    // Nächste Frage oder Bewertungsseite
+                    if (nextQuestionIndex >= questions.length) {
+                        window.location.href = "bewertung.html";
+                    } else {
+                        window.location.href = "frage.html";
+                    }
+                }, 1500);
             };
             optionsContainer.appendChild(button);
         });
