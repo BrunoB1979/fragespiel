@@ -41,8 +41,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 const newScore = isCorrect ? currentScore + question.points : currentScore;
                 localStorage.setItem("score", newScore.toString());
 
-                // Zur Auflösungsseite wechseln
-                window.location.href = "aufloesung.html";
+                // Feedback anzeigen
+                const feedbackIcon = document.createElement("img");
+                feedbackIcon.src = isCorrect
+                    ? "assets/images/correct.svg"
+                    : "assets/images/incorrect.svg";
+                feedbackIcon.alt = isCorrect ? "Richtig" : "Falsch";
+                feedbackIcon.style.width = "50px";
+                feedbackIcon.style.marginTop = "20px";
+
+                // Feedback einfügen und Buttons entfernen
+                optionsContainer.innerHTML = ""; // Buttons entfernen
+                optionsContainer.appendChild(feedbackIcon);
+
+                // Zur Auflösungsseite wechseln nach einer kurzen Verzögerung
+                setTimeout(() => {
+                    window.location.href = "aufloesung.html";
+                }, 1500); // 1,5 Sekunden Verzögerung
             };
             optionsContainer.appendChild(button);
         });
