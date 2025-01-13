@@ -2,48 +2,39 @@ function startQuiz() {
     const thema = document.getElementById("thema").value;
     const anzahl = parseInt(document.getElementById("anzahl").value);
 
-    console.log(`Thema: ${thema}, Anzahl der Fragen: ${anzahl}`);
-
     fetch(`assets/data/${thema}.json`)
         .then(response => {
             if (!response.ok) {
-                throw new Error(`HTTP-Fehler! Status: ${response.status}`);
+                throw new Error(`Fehler beim Laden der JSON-Datei: ${response.status}`);
             }
             return response.json();
         })
         .then(data => {
-            console.log("Daten geladen:", data);
-
             const allQuestions = data[thema];
             if (!allQuestions || allQuestions.length === 0) {
-                throw new Error("Keine Fragen gefunden!");
+                throw new Error("Keine Fragen im JSON gefunden!");
             }
-
-            console.log("Verfügbare Fragen:", allQuestions);
 
             const totalAvailableQuestions = allQuestions.length;
-
-            if (totalAvailableQuestions < anzahl) {
-                alert(`Es gibt nur ${totalAvailableQuestions} Fragen für das Thema. Die maximale Anzahl wird verwendet.`);
+            if (anzahl > totalAvailableQuestions) {
+                alert(`Es gibt nur ${totalAvailableQuestions} Fragen. Die maximale Anzahl wird verwendet.`);
             }
-
-            const selectedQuestionCount = Math.min(totalAvailableQuestions, anzahl);
 
             // Zufällige Fragen auswählen
             const selectedQuestions = allQuestions
-                .sort(() => 0.5 - Math.random())
-                .slice(0, selectedQuestionCount);
+                .sort(() => Math.random() - 0.5)
+                .slice(0, Math.min(anzahl, totalAvailableQuestions));
 
-            console.log("Ausgewählte Fragen:", selectedQuestions);
-
+            // Fragen in localStorage speichern
             localStorage.setItem("questions", JSON.stringify(selectedQuestions));
             localStorage.setItem("currentQuestionIndex", "0");
             localStorage.setItem("score", "0");
 
+            // Zur Frageseite wechseln
             window.location.href = "frage.html";
         })
-        .catch(err => {
-            console.error("Fehler:", err.message);
-            alert("Es ist ein Fehler beim Laden der Fragen aufgetreten.");
+        .catch(error => {
+            console.error("Fehler beim Laden der Fragen:", error);
+            alert("Es ist ein Fehler beim Laden der Fragen aufgetreten. Bitte überprüfe die JSON-Dateien.");
         });
 }
