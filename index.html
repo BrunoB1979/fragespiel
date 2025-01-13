@@ -10,21 +10,27 @@
 </head>
 <body>
     <div id="container">
-        <img src="assets/images/logo.png" alt="Quiz Logo" width="100">
-        <h1>Willkommen zum Quiz</h1>
-        <label for="thema">Thema auswählen:</label>
-        <select id="thema">
-            <option value="geschichte">Geschichte</option>
-            <option value="philosophie">Philosophie</option>
-        </select>
-        <label for="anzahl">Anzahl der Fragen:</label>
-        <select id="anzahl">
-            <option value="3">3</option>
-            <option value="5">5</option>
-        </select>
-        <button onclick="startQuiz()">Start</button>
+        <header>
+            <h1>Willkommen zum Quiz</h1>
+        </header>
+        <main>
+            <img src="assets/images/logo.png" alt="Quiz Logo" width="100">
+            <label for="thema">Thema auswählen:</label>
+            <select id="thema">
+                <option value="geschichte">Geschichte</option>
+                <option value="philosophie">Philosophie</option>
+            </select>
+            <label for="anzahl">Anzahl der Fragen:</label>
+            <select id="anzahl">
+                <option value="3">3</option>
+                <option value="5">5</option>
+            </select>
+        </main>
+        <footer>
+            <button id="footerButton" onclick="startQuiz()">Start</button>
+        </footer>
     </div>
-
     <script src="assets/js/index.js"></script>
 </body>
 </html>
+
