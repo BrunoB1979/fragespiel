@@ -1,6 +1,23 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const startButton = document.getElementById("startButton");
+    if (startButton) {
+        startButton.addEventListener("click", startQuiz);
+    } else {
+        console.error("Button mit ID 'startButton' nicht gefunden.");
+    }
+});
+
 function startQuiz() {
-    const thema = document.getElementById("thema").value;
-    const anzahl = parseInt(document.getElementById("anzahl").value);
+    const themaSelect = document.getElementById("thema");
+    const anzahlSelect = document.getElementById("anzahl");
+
+    if (!themaSelect || !anzahlSelect) {
+        alert("Thema oder Anzahl der Fragen nicht ausgewählt.");
+        return;
+    }
+
+    const thema = themaSelect.value;
+    const anzahl = parseInt(anzahlSelect.value);
 
     fetch(`assets/data/${thema}.json`)
         .then(response => {
