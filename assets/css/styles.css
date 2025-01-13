@@ -74,7 +74,7 @@ main h2#question {
 }
 
 /* Antworten */
-main #options button {
+main #options button.option-button {
     background-color: var(--button-color);
     color: #fff;
     padding: 12px 20px;
@@ -86,7 +86,7 @@ main #options button {
     transition: background-color 0.3s ease;
 }
 
-main #options button:hover {
+main #options button.option-button:hover {
     background-color: var(--button-hover);
 }
 
@@ -103,7 +103,7 @@ footer {
     margin-top: 15px;
 }
 
-footer #footerButton {
+footer button {
     background-color: var(--button-color);
     color: #fff;
     padding: 12px 20px;
@@ -114,7 +114,7 @@ footer #footerButton {
     transition: background-color 0.3s ease;
 }
 
-footer #footerButton:hover {
+footer button:hover {
     background-color: var(--button-hover);
 }
 
