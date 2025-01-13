@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Fragen und aktueller Index aus dem localStorage abrufen
     const questions = JSON.parse(localStorage.getItem("questions"));
     const currentQuestionIndex = parseInt(localStorage.getItem("currentQuestionIndex")) || 0;
+
+    // Letzte Antwortinformationen abrufen
     const lastAnswerCorrect = localStorage.getItem("lastAnswerCorrect") === "true";
     const lastCorrectAnswer = localStorage.getItem("lastCorrectAnswer");
     const lastExplanation = localStorage.getItem("lastExplanation");
@@ -17,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("explanation").innerText = lastExplanation;
 
     // Button zur nächsten Frage
-    document.getElementById("nextButton").onclick = () => {
+    const nextButton = document.getElementById("nextButton");
+    nextButton.onclick = () => {
         const nextQuestionIndex = currentQuestionIndex + 1;
         localStorage.setItem("currentQuestionIndex", nextQuestionIndex.toString());
 
