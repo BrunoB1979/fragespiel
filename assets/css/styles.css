@@ -1,14 +1,17 @@
+/* Allgemeine Variablen */
 :root {
     --primary-color: #4A90E2;
     --secondary-color: #F5A623;
-    --background-color: #F2F2F2;
-    --accent-color: #7ED321;
-    --text-primary: #333333;
-    --text-secondary: #666666;
     --success-color: #28A745;
     --error-color: #DC3545;
+    --background-color: #F7F9FC;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --button-color: #4A90E2;
+    --button-hover: #357ABD;
 }
 
+/* Körper */
 body {
     background-color: var(--background-color);
     font-family: 'Roboto', sans-serif;
@@ -19,129 +22,70 @@ body {
     height: 100vh;
 }
 
+/* Hauptcontainer */
 #container {
     width: 90%;
     max-width: 400px;
-    height: 90%;
-    max-height: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     background: #fff;
-    padding: 20px;
+    padding: 30px 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-#header {
-    text-align: left;
-}
-
-#progress {
-    font-size: 16px;
-    color: var(--text-secondary);
-}
-
-#main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-#question-container {
+/* Startseite */
+h1 {
+    font-size: 24px;
+    color: var(--text-primary);
     margin-bottom: 20px;
-    text-align: center;
 }
 
-#question {
-    font-size: 18px;
-    font-weight: 500;
-    margin-top: 20px; /* Frage höher setzen */
-}
-
-#options {
+select, button {
     width: 100%;
-    display: flex;
-    flex-direction: column; /* Buttons untereinander anzeigen */
-    align-items: center;
-    gap: 10px; /* Abstand zwischen den Buttons */
-}
-
-#options button {
-    width: 100%; /* Buttons auf volle Breite */
-    max-width: 300px;
-    padding: 10px;
+    padding: 12px;
+    margin: 10px 0;
     font-size: 16px;
-    border: 1px solid var(--primary-color);
-    background-color: #fff;
-    color: var(--primary-color);
     border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    border: 1px solid #ccc;
 }
 
-#options button:hover {
-    background-color: var(--primary-color);
+button {
+    background-color: var(--button-color);
     color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-footer#footer {
-    margin-top: 20px;
-    text-align: center;
+button:hover {
+    background-color: var(--button-hover);
 }
 
-#document-icon {
-    width: 30px;
-    height: 30px;
-    opacity: 0.8;
+/* Rundenzähler */
+#progress {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    text-align: center; /* Zentriert */
 }
 
-/* Styling für richtige und falsche Antworten */
-.correct {
-    color: var(--success-color);
-    text-align: center;
+/* Ergebnisseite */
+#score, #percentage {
+    font-size: 20px;
+    margin: 10px 0;
+    color: var(--text-primary);
 }
 
-.incorrect {
-    color: var(--error-color);
-    text-align: center;
+#restartButton {
+    background-color: var(--button-color);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-    animation: shake 0.5s ease-in-out;
-}
-
-@keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
-}
-
-@media (max-width: 420px) {
-    #container {
-        width: 100%;
-        height: 100%;
-        padding: 10px;
-    }
-
-    h1, h2, h3 {
-        font-size: 18px;
-    }
-
-    button {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    #progress {
-        font-size: 14px;
-    }
-
-    #document-icon {
-        width: 25px;
-        height: 25px;
-    }
+#restartButton:hover {
+    background-color: var(--button-hover);
 }
