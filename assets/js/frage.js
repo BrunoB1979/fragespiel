@@ -41,24 +41,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 const newScore = isCorrect ? currentScore + question.points : currentScore;
                 localStorage.setItem("score", newScore.toString());
 
-                // Feedback anzeigen
+                // Feedback anzeigen (Correct/Incorrect SVG)
                 const feedbackIcon = document.createElement("img");
                 feedbackIcon.src = isCorrect
                     ? "assets/images/correct.svg"
                     : "assets/images/incorrect.svg";
                 feedbackIcon.alt = isCorrect ? "Richtig" : "Falsch";
-                feedbackIcon.style.width = "50px";
+                feedbackIcon.style.width = "80px";
                 feedbackIcon.style.marginTop = "20px";
+                feedbackIcon.style.display = "block";
+                feedbackIcon.style.margin = "0 auto"; // Zentrierung
 
-                // Feedback einfügen und Buttons entfernen
+                // Buttons entfernen und Feedback anzeigen
                 optionsContainer.innerHTML = ""; // Buttons entfernen
                 optionsContainer.appendChild(feedbackIcon);
 
                 // Zur Auflösungsseite wechseln nach einer kurzen Verzögerung
                 setTimeout(() => {
                     window.location.href = "aufloesung.html";
-                }, 1500); // 1,5 Sekunden Verzögerung
+                }, 2000); // 2 Sekunden Verzögerung
             };
             optionsContainer.appendChild(button);
         });
+});
+
 });
