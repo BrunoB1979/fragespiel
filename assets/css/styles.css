@@ -10,7 +10,19 @@
     --button-color: #4A90E2;
     --button-hover: #357ABD;
 }
+/* Frage-Icon Styling */
+#document-icon {
+    width: 50px; /* Feste Breite */
+    height: 50px; /* Feste Höhe */
+    display: block; /* Sicherstellen, dass es als Block-Element behandelt wird */
+    margin: 10px auto; /* Zentriert mit Abstand */
+    opacity: 0.8; /* Optional: Leichte Transparenz */
+    transition: transform 0.3s ease; /* Optional: Animation bei Hover */
+}
 
+#document-icon:hover {
+    transform: scale(1.1); /* Optional: Vergrößerung bei Hover */
+}
 /* Körper */
 body {
     background-color: var(--background-color);
