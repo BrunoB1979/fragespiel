@@ -13,23 +13,45 @@ document.addEventListener("DOMContentLoaded", () => {
         ? "Richtig! 🎉"
         : "Falsch 😞";
 
-    document.getElementById("result").innerText = resultText;
+    const resultElement = document.getElementById("result");
+    if (resultElement) {
+        resultElement.innerText = resultText;
+    } else {
+        console.error("Element mit ID 'result' nicht gefunden.");
+    }
 
     // Richtige Antwort und Erklärung anzeigen
-    document.getElementById("correctAnswer").innerText = lastCorrectAnswer;
-    document.getElementById("explanation").innerText = lastExplanation;
+    const correctAnswerElement = document.getElementById("correctAnswer");
+    const explanationElement = document.getElementById("explanation");
+
+    if (correctAnswerElement) {
+        correctAnswerElement.innerText = lastCorrectAnswer || "Keine Antwort verfügbar.";
+    } else {
+        console.error("Element mit ID 'correctAnswer' nicht gefunden.");
+    }
+
+    if (explanationElement) {
+        explanationElement.innerText = lastExplanation || "Keine Erklärung verfügbar.";
+    } else {
+        console.error("Element mit ID 'explanation' nicht gefunden.");
+    }
 
     // Button zur nächsten Frage
-    const nextButton = document.getElementById("nextButton"); // Korrigierte ID verwenden
-    nextButton.onclick = () => {
-        const nextQuestionIndex = currentQuestionIndex + 1;
-        localStorage.setItem("currentQuestionIndex", nextQuestionIndex.toString());
+    const nextButton = document.getElementById("nextButton");
+    if (nextButton) {
+        nextButton.addEventListener("click", () => {
+            const nextQuestionIndex = currentQuestionIndex + 1;
+            localStorage.setItem("currentQuestionIndex", nextQuestionIndex.toString());
 
-        // Nächste Frage oder Bewertungsseite
-        if (nextQuestionIndex >= questions.length) {
-            window.location.href = "bewertung.html";
-        } else {
-            window.location.href = "frage.html";
-        }
-    };
+            // Nächste Frage oder Bewertungsseite
+            if (nextQuestionIndex >= questions.length) {
+                window.location.href = "bewertung.html";
+            } else {
+                window.location.href = "frage.html";
+            }
+        });
+    } else {
+        console.error("Button mit ID 'nextButton' nicht gefunden.");
+    }
 });
+
