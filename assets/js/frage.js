@@ -13,54 +13,84 @@ document.addEventListener("DOMContentLoaded", () => {
     const question = questions[currentQuestionIndex];
 
     // Fortschrittsanzeige aktualisieren
-    document.getElementById("currentQuestion").innerText = currentQuestionIndex + 1;
-    document.getElementById("totalQuestions").innerText = questions.length;
+    const currentQuestionElem = document.getElementById("currentQuestion");
+    const totalQuestionsElem = document.getElementById("totalQuestions");
+    if (currentQuestionElem) {
+        currentQuestionElem.innerText = currentQuestionIndex + 1;
+    } else {
+        console.error("Element mit ID 'currentQuestion' nicht gefunden.");
+    }
+
+    if (totalQuestionsElem) {
+        totalQuestionsElem.innerText = questions.length;
+    } else {
+        console.error("Element mit ID 'totalQuestions' nicht gefunden.");
+    }
 
     // Frage anzeigen
-    document.getElementById("question").innerText = question.question;
+    const questionElem = document.getElementById("question");
+    if (questionElem) {
+        questionElem.innerText = question.question || "Keine Frage verfügbar.";
+    } else {
+        console.error("Element mit ID 'question' nicht gefunden.");
+    }
 
     // Antworten zufällig sortieren und anzeigen
     const optionsContainer = document.getElementById("options");
-    optionsContainer.innerHTML = ""; // Container leeren
+    if (optionsContainer) {
+        optionsContainer.innerHTML = ""; // Container leeren
 
-    question.options
-        .map((option, index) => ({ text: option, index }))
-        .sort(() => Math.random() - 0.5) // Antworten mischen
-        .forEach(option => {
-            const button = document.createElement("button");
-            button.innerText = option.text;
-            button.onclick = () => {
-                // Antwort auswerten
-                const isCorrect = option.index === question.answer;
-                localStorage.setItem("lastAnswerCorrect", isCorrect);
-                localStorage.setItem("lastCorrectAnswer", question.options[question.answer]);
-                localStorage.setItem("lastExplanation", question.explanation);
+        // Überprüfen, ob 'options' ein Array ist
+        if (Array.isArray(question.options)) {
+            question.options
+                .map((option, index) => ({ text: option, index }))
+                .sort(() => Math.random() - 0.5) // Antworten mischen
+                .forEach(option => {
+                    const button = document.createElement("button");
+                    button.innerText = option.text;
+                    button.classList.add("option-button"); // Optional: Klasse für zusätzliche Styling
 
-                // Punkte aktualisieren
-                const currentScore = parseInt(localStorage.getItem("score")) || 0;
-                const newScore = isCorrect ? currentScore + question.points : currentScore;
-                localStorage.setItem("score", newScore.toString());
+                    button.addEventListener("click", () => {
+                        // Antwort auswerten
+                        const isCorrect = option.index === question.answer;
+                        localStorage.setItem("lastAnswerCorrect", isCorrect);
+                        localStorage.setItem("lastCorrectAnswer", question.options[question.answer]);
+                        localStorage.setItem("lastExplanation", question.explanation || "Keine Erklärung verfügbar.");
 
-                // Feedback anzeigen (Correct/Incorrect SVG)
-                const feedbackIcon = document.createElement("img");
-                feedbackIcon.src = isCorrect
-                    ? "assets/images/correct.svg"
-                    : "assets/images/incorrect.svg";
-                feedbackIcon.alt = isCorrect ? "Richtig" : "Falsch";
-                feedbackIcon.style.width = "80px";
-                feedbackIcon.style.marginTop = "20px";
-                feedbackIcon.style.display = "block";
-                feedbackIcon.style.margin = "0 auto"; // Zentrierung
+                        // Punkte aktualisieren
+                        const currentScore = parseInt(localStorage.getItem("score")) || 0;
+                        const questionPoints = parseInt(question.points) || 0;
+                        const newScore = isCorrect ? currentScore + questionPoints : currentScore;
+                        localStorage.setItem("score", newScore.toString());
 
-                // Buttons entfernen und Feedback anzeigen
-                optionsContainer.innerHTML = ""; // Buttons entfernen
-                optionsContainer.appendChild(feedbackIcon);
+                        // Feedback anzeigen (Correct/Incorrect SVG)
+                        const feedbackIcon = document.createElement("img");
+                        feedbackIcon.src = isCorrect
+                            ? "assets/images/correct.svg"
+                            : "assets/images/incorrect.svg";
+                        feedbackIcon.alt = isCorrect ? "Richtig" : "Falsch";
+                        feedbackIcon.style.width = "80px";
+                        feedbackIcon.style.marginTop = "20px";
+                        feedbackIcon.style.display = "block";
+                        feedbackIcon.style.margin = "0 auto"; // Zentrierung
 
-                // Zur Auflösungsseite wechseln nach einer kurzen Verzögerung
-                setTimeout(() => {
-                    window.location.href = "aufloesung.html";
-                }, 2000); // 2 Sekunden Verzögerung
-            };
-            optionsContainer.appendChild(button);
-        });
+                        // Buttons entfernen und Feedback anzeigen
+                        optionsContainer.innerHTML = ""; // Buttons entfernen
+                        optionsContainer.appendChild(feedbackIcon);
+
+                        // Zur Auflösungsseite wechseln nach einer kurzen Verzögerung
+                        setTimeout(() => {
+                            window.location.href = "aufloesung.html";
+                        }, 2000); // 2 Sekunden Verzögerung
+                    });
+
+                    optionsContainer.appendChild(button);
+                });
+        } else {
+            console.error("'options' ist kein Array.");
+            optionsContainer.innerHTML = "<p>Keine Antworten verfügbar.</p>";
+        }
+    } else {
+        console.error("Element mit ID 'options' nicht gefunden.");
+    }
 });
