@@ -1,0 +1,61 @@
+{
+  "philosophie": [
+    {
+      "id": 1,
+      "question": "Wer schrieb 'Die Republik'?",
+      "options": ["Aristoteles", "Platon", "Sokrates", "Kant"],
+      "answer": 1,
+      "points": 2,
+      "explanation": "'Die Republik' ist ein philosophisches Werk von Platon."
+    },
+    {
+      "id": 2,
+      "question": "Welcher Philosoph ist für den kategorischen Imperativ bekannt?",
+      "options": ["Nietzsche", "Kant", "Hegel", "Descartes"],
+      "answer": 1,
+      "points": 3,
+      "explanation": "Immanuel Kant entwickelte den kategorischen Imperativ als Grundlage seiner Ethik."
+    },
+    {
+      "id": 3,
+      "question": "Welcher Philosoph schrieb 'Also sprach Zarathustra'?",
+      "options": ["Schopenhauer", "Kant", "Nietzsche", "Hegel"],
+      "answer": 2,
+      "points": 3,
+      "explanation": "Friedrich Nietzsche schrieb 'Also sprach Zarathustra', ein Hauptwerk seiner Philosophie."
+    },
+    {
+      "id": 4,
+      "question": "Wer gilt als Begründer der modernen Existenzphilosophie?",
+      "options": ["Jean-Paul Sartre", "Martin Heidegger", "Søren Kierkegaard", "Albert Camus"],
+      "answer": 2,
+      "points": 2,
+      "explanation": "Søren Kierkegaard gilt als der Begründer der modernen Existenzphilosophie."
+    },
+    {
+      "id": 5,
+      "question": "Was ist die zentrale Idee der Philosophie von Descartes?",
+      "options": ["Cogito, ergo sum", "Die Dialektik", "Der Übermensch", "Der kategorische Imperativ"],
+      "answer": 0,
+      "points": 1,
+      "explanation": "'Cogito, ergo sum' (Ich denke, also bin ich) ist der zentrale Grundsatz von René Descartes' Philosophie."
+    },
+    {
+      "id": 6,
+      "question": "Welcher Philosoph prägte den Begriff 'Wille zur Macht'?",
+      "options": ["Kant", "Nietzsche", "Schopenhauer", "Hume"],
+      "answer": 1,
+      "points": 2,
+      "explanation": "Friedrich Nietzsche prägte den Begriff 'Wille zur Macht' als zentralen Aspekt seiner Philosophie."
+    },
+    {
+      "id": 7,
+      "question": "Welcher griechische Philosoph war Lehrer von Alexander dem Großen?",
+      "options": ["Platon", "Aristoteles", "Sokrates", "Epikur"],
+      "answer": 1,
+      "points": 2,
+      "explanation": "Aristoteles war der Lehrer von Alexander dem Großen und einer der einflussreichsten Philosophen der Antike."
+    }
+    // Weitere Fragen hinzufügen...
+  ]
+}

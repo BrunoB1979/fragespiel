@@ -1,0 +1,126 @@
+:root {
+    --primary-color: #4A90E2;
+    --secondary-color: #F5A623;
+    --background-color: #F2F2F2;
+    --accent-color: #7ED321;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --success-color: #28A745;
+    --error-color: #DC3545;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#container {
+    width: 90%;
+    max-width: 400px;
+    height: 90%;
+    max-height: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header#header {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+#progress {
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+main#main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+#question-container {
+    margin-bottom: 20px;
+}
+
+#question {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#options button {
+    margin: 8px 0;
+}
+
+footer#footer {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#document-icon {
+    width: 30px;
+    height: 30px;
+    opacity: 0.7;
+}
+
+.correct {
+    color: var(--success-color);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.incorrect {
+    color: var(--error-color);
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+@media (max-width: 420px) {
+    #container {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+    }
+
+    h1, h2, h3 {
+        font-size: 18px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    #progress {
+        font-size: 14px;
+    }
+
+    #document-icon {
+        width: 25px;
+        height: 25px;
+    }
+}

@@ -1,0 +1,68 @@
+{
+  "geschichte": [
+    {
+      "id": 1,
+      "question": "Wann begann der Zweite Weltkrieg?",
+      "options": ["1914", "1939", "1945", "1961"],
+      "answer": 1,
+      "points": 2,
+      "explanation": "Der Zweite Weltkrieg begann am 1. September 1939 mit dem deutschen Überfall auf Polen."
+    },
+    {
+      "id": 2,
+      "question": "Wer war der erste Bundeskanzler Deutschlands?",
+      "options": ["Konrad Adenauer", "Helmut Kohl", "Angela Merkel", "Ludwig Erhard"],
+      "answer": 0,
+      "points": 1,
+      "explanation": "Konrad Adenauer war von 1949 bis 1963 der erste Bundeskanzler der Bundesrepublik Deutschland."
+    },
+    {
+      "id": 3,
+      "question": "In welchem Jahr fiel die Berliner Mauer?",
+      "options": ["1961", "1989", "1990", "1973"],
+      "answer": 1,
+      "points": 2,
+      "explanation": "Die Berliner Mauer fiel am 9. November 1989."
+    },
+    {
+      "id": 4,
+      "question": "Wer gründete das Römische Reich?",
+      "options": ["Julius Caesar", "Augustus", "Nero", "Trajan"],
+      "answer": 1,
+      "points": 3,
+      "explanation": "Augustus war der erste Kaiser und Gründer des Römischen Reiches."
+    },
+    {
+      "id": 5,
+      "question": "Wann endete der Erste Weltkrieg?",
+      "options": ["1914", "1918", "1939", "1945"],
+      "answer": 1,
+      "points": 2,
+      "explanation": "Der Erste Weltkrieg endete am 11. November 1918 mit dem Waffenstillstand von Compiègne."
+    },
+    {
+      "id": 6,
+      "question": "Wie hieß die Hauptstadt des Heiligen Römischen Reiches?",
+      "options": ["Wien", "Prag", "Aachen", "Berlin"],
+      "answer": 2,
+      "points": 1,
+      "explanation": "Aachen war eine wichtige Hauptstadt während des Heiligen Römischen Reiches."
+    },
+    {
+      "id": 7,
+      "question": "Wer führte Deutschland zur Wiedervereinigung?",
+      "options": ["Konrad Adenauer", "Helmut Kohl", "Willy Brandt", "Angela Merkel"],
+      "answer": 1,
+      "points": 2,
+      "explanation": "Helmut Kohl war Bundeskanzler während der Wiedervereinigung Deutschlands 1990."
+    },
+    {
+      "id": 8,
+      "question": "Welche Stadt wurde 1945 von der Atombombe getroffen?",
+      "options": ["Nagasaki", "Hiroshima", "Kyoto", "Osaka"],
+      "answer": 1,
+      "points": 3,
+      "explanation": "Hiroshima wurde am 6. August 1945 durch eine Atombombe zerstört."
+    }
+  ]
+}
