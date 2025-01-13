@@ -1,29 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
     const questions = JSON.parse(localStorage.getItem("questions"));
-    console.log("Geladene Fragen:", questions);
-
     const currentQuestionIndex = parseInt(localStorage.getItem("currentQuestionIndex"));
-    console.log("Aktueller Fragenindex:", currentQuestionIndex);
+    const totalQuestions = questions.length;
 
-    if (!questions || questions.length === 0) {
-        alert("Keine Fragen verfügbar. Bitte starten Sie das Quiz neu.");
-        window.location.href = "index.html";
+    // Überprüfung: Sind alle Fragen beantwortet?
+    if (currentQuestionIndex >= totalQuestions) {
+        // Zur Bewertungsseite wechseln
+        window.location.href = "bewertung.html";
         return;
     }
 
-    const totalQuestions = questions.length;
+    // Lade die aktuelle Frage
     const question = questions[currentQuestionIndex];
-
-    console.log("Aktuelle Frage:", question);
 
     // Update der Fortschrittsanzeige
     document.getElementById("currentQuestion").innerText = currentQuestionIndex + 1;
     document.getElementById("totalQuestions").innerText = totalQuestions;
 
-    // Frage anzeigen
+    // Zeige die Frage
     document.getElementById("question").innerText = question.question;
 
-    // Antworten zufällig sortieren
+    // Antworten zufällig sortieren und anzeigen
     const options = question.options
         .map((option, index) => ({ text: option, index }))
         .sort(() => 0.5 - Math.random());
@@ -35,12 +32,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const button = document.createElement("button");
         button.innerText = option.text;
         button.onclick = () => {
+            // Antwort überprüfen
             const isCorrect = option.index === question.answer;
             localStorage.setItem("lastAnswerCorrect", isCorrect);
+
+            // Punkte aktualisieren
             const currentScore = parseInt(localStorage.getItem("score"));
             const newScore = isCorrect ? currentScore + question.points : currentScore;
             localStorage.setItem("score", newScore.toString());
-            window.location.href = "aufloesung.html";
+
+            // Index für die nächste Frage erhöhen
+            localStorage.setItem("currentQuestionIndex", (currentQuestionIndex + 1).toString());
+
+            // Nächste Frage laden oder zur Bewertungsseite wechseln
+            if (currentQuestionIndex + 1 >= totalQuestions) {
+                window.location.href = "bewertung.html";
+            } else {
+                window.location.href = "frage.html";
+            }
         };
         optionsContainer.appendChild(button);
     });
