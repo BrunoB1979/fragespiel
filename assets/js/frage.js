@@ -42,10 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("score", newScore.toString());
 
             // Index für die nächste Frage erhöhen
-            localStorage.setItem("currentQuestionIndex", (currentQuestionIndex + 1).toString());
+            const nextQuestionIndex = currentQuestionIndex + 1;
+            localStorage.setItem("currentQuestionIndex", nextQuestionIndex.toString());
 
             // Nächste Frage laden oder zur Bewertungsseite wechseln
-            if (currentQuestionIndex + 1 >= totalQuestions) {
+            if (nextQuestionIndex >= totalQuestions) {
                 window.location.href = "bewertung.html";
             } else {
                 window.location.href = "frage.html";
