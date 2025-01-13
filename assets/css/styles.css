@@ -11,7 +11,6 @@
 
 body {
     background-color: var(--background-color);
-    color: var(--text-primary);
     font-family: 'Roboto', sans-serif;
     margin: 0;
     display: flex;
@@ -24,23 +23,18 @@ body {
     width: 90%;
     max-width: 400px;
     height: 90%;
-    max-height: 400px;
-    padding: 20px;
-    box-sizing: border-box;
+    max-height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    background-color: #FFFFFF;
+    background: #fff;
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header#header {
-    width: 100%;
+#header {
     text-align: left;
-    margin-bottom: 10px;
 }
 
 #progress {
@@ -48,46 +42,73 @@ header#header {
     color: var(--text-secondary);
 }
 
-main#main-content {
-    flex-grow: 1;
+#main-content {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 #question-container {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 #question {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
+    margin-top: 20px; /* Frage höher setzen */
+}
+
+#options {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Buttons untereinander anzeigen */
+    align-items: center;
+    gap: 10px; /* Abstand zwischen den Buttons */
 }
 
 #options button {
-    margin: 8px 0;
+    width: 100%; /* Buttons auf volle Breite */
+    max-width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--primary-color);
+    background-color: #fff;
+    color: var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#options button:hover {
+    background-color: var(--primary-color);
+    color: #fff;
 }
 
 footer#footer {
-    width: 100%;
+    margin-top: 20px;
     text-align: center;
-    margin-top: 10px;
 }
 
 #document-icon {
     width: 30px;
     height: 30px;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
+/* Styling für richtige und falsche Antworten */
 .correct {
     color: var(--success-color);
-    animation: fadeIn 0.5s ease-in-out;
+    text-align: center;
 }
 
 .incorrect {
     color: var(--error-color);
+    text-align: center;
+}
+
     animation: shake 0.5s ease-in-out;
 }
 
