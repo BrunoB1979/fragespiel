@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Prüfen, ob alle Fragen beantwortet wurden
     if (!questions || currentQuestionIndex >= questions.length) {
-        // Zur Bewertungsseite weiterleiten
         window.location.href = "bewertung.html";
         return;
     }
@@ -34,35 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Antwort auswerten
                 const isCorrect = option.index === question.answer;
                 localStorage.setItem("lastAnswerCorrect", isCorrect);
+                localStorage.setItem("lastCorrectAnswer", question.options[question.answer]);
+                localStorage.setItem("lastExplanation", question.explanation);
 
                 // Punkte aktualisieren
                 const currentScore = parseInt(localStorage.getItem("score")) || 0;
                 const newScore = isCorrect ? currentScore + question.points : currentScore;
                 localStorage.setItem("score", newScore.toString());
 
-                // Richtig/Falsch-Symbol anzeigen
-                const feedbackIcon = document.createElement("img");
-                feedbackIcon.src = isCorrect
-                    ? "assets/images/correct.svg"
-                    : "assets/images/incorrect.svg";
-                feedbackIcon.alt = isCorrect ? "Richtig" : "Falsch";
-                feedbackIcon.style.width = "50px";
-                feedbackIcon.style.marginTop = "20px";
-                optionsContainer.innerHTML = ""; // Buttons entfernen
-                optionsContainer.appendChild(feedbackIcon);
-
-                // Weiter nach kurzer Verzögerung
-                setTimeout(() => {
-                    const nextQuestionIndex = currentQuestionIndex + 1;
-                    localStorage.setItem("currentQuestionIndex", nextQuestionIndex.toString());
-
-                    // Nächste Frage oder Bewertungsseite
-                    if (nextQuestionIndex >= questions.length) {
-                        window.location.href = "bewertung.html";
-                    } else {
-                        window.location.href = "frage.html";
-                    }
-                }, 1500);
+                // Zur Auflösungsseite wechseln
+                window.location.href = "aufloesung.html";
             };
             optionsContainer.appendChild(button);
         });
